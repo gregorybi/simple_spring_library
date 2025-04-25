@@ -1,15 +1,13 @@
 package com.example.library;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "books")
 public class Book {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private String title;
     private String author;
 
@@ -20,7 +18,7 @@ public class Book {
         this.author = author;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -40,4 +38,3 @@ public class Book {
         this.author = author;
     }
 }
-

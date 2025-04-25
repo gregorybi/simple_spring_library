@@ -23,7 +23,7 @@ public class LibraryController {
     }
 
     @DeleteMapping("/delete/{id}")
-public String deleteBook(@PathVariable Long id) {
+public String deleteBook(@PathVariable String id) {
     if (bookRepository.existsById(id)) {
         bookRepository.deleteById(id);
         return "Book with ID " + id + " deleted successfully.";
@@ -33,7 +33,7 @@ public String deleteBook(@PathVariable Long id) {
 }
 
 @PutMapping("/update/{id}")
-public String updateBook(@PathVariable Long id, @RequestBody Book updatedBook) {
+public String updateBook(@PathVariable String id, @RequestBody Book updatedBook) {
     return bookRepository.findById(id)
         .map(book -> {
             book.setTitle(updatedBook.getTitle());
